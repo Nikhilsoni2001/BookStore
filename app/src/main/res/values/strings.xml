@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Book Store</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="favorites">Favourites</string>
+    <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dashboard_fragment">Dashboard Fragment</string>
+    <string name="favourite_fragment">FavouriteFragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="about_fragment">About Fragment</string>
+    <string name="my_phone">8699333207</string>
+    <string name="my_mail">nsoni19012001@gmail.com</string>
+    <string name="my_name">Nikhil Soni</string>
+    <string name="my_location">Mohali</string>
+    <string name="check_internet">Check Internet</string>
+
+</resources>

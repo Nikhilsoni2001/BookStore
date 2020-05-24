@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".fragment.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_profile" />
+
+    <TextView
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgProfile"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:drawableStart="@drawable/ic_profile"
+        android:padding="10dp"
+        android:text="@string/my_name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etName"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_email"
+        android:padding="10dp"
+        android:text="@string/my_mail"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_phone"
+        android:padding="10dp"
+        android:text="@string/my_phone"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPhone"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_address"
+        android:padding="10dp"
+        android:text="@string/my_location"
+        android:textSize="20sp" />
+
+</RelativeLayout>

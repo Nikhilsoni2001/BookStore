@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nikhil.bookstore.Database.BookEntity
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 
 class FavouriteRecyclerAdapter(val context: Context, val bookList: List<BookEntity>) :
     RecyclerView.Adapter<FavouriteRecyclerAdapter.FavouriteViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteViewHolder {
         val view =
             LayoutInflater.from(parent.context)                                  //responsible for inflating recyclerview
@@ -41,7 +43,7 @@ class FavouriteRecyclerAdapter(val context: Context, val bookList: List<BookEnti
         val txtBookPrice: TextView = view.findViewById(R.id.txtFavBookPrice)
         val txtBookRating: TextView = view.findViewById(R.id.txtFavBookRating)
         val imgBookImage: ImageView = view.findViewById(R.id.imgFavBookImage)
-        val llFavContent: ImageView = view.findViewById(R.id.llFavContent)
+        val llContent: LinearLayout = view.findViewById(R.id.llFavContent)
     }
 
 }

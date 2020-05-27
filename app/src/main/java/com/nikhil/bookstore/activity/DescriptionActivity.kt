@@ -235,7 +235,7 @@ class DescriptionActivity : AppCompatActivity() {
         * Mode2 = Add Book in Fav
         * Mode3 = Remove book from Fav*/
 
-        val db = Room.databaseBuilder(context, BookDatabase::class.java, "book-db").build()
+        val db = Room.databaseBuilder(context, BookDatabase::class.java, "books-db").build()
 
         override fun doInBackground(vararg params: Void?): Boolean {
             when (mode) {

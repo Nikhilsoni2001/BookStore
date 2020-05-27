@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -25,6 +23,9 @@ import com.nikhil.bookstore.adapter.DashboardRecyclerAdapter
 import com.nikhil.bookstore.models.Book
 import com.nikhil.bookstore.unit.ConnectionManager
 import org.json.JSONException
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.HashMap
 
 class DashboardFragment : Fragment() {
 
@@ -36,6 +37,14 @@ class DashboardFragment : Fragment() {
 
     val bookInfoList = arrayListOf<Book>()
 
+    var ratingComparator = Comparator<Book> { book1, book2 ->
+        if (book1.bookRating.compareTo(book2.bookRating, true) == 0) {
+            book1.bookName.compareTo(book2.bookName)
+        } else {
+            book1.bookRating.compareTo(book2.bookRating, true)
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +53,8 @@ class DashboardFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
+        setHasOptionsMenu(true)
+
         recyclerDashboard = view.findViewById(R.id.recyclerDashboard)
 
 
@@ -51,7 +62,8 @@ class DashboardFragment : Fragment() {
 
         progressBar = view.findViewById(R.id.progressBar)
 
-        progressLayout.visibility = View.VISIBLE                //making progressLayout visible when the fragment is loaded
+        progressLayout.visibility =
+            View.VISIBLE                //making progressLayout visible when the fragment is loaded
 
 
         layoutManager = LinearLayoutManager(activity)
@@ -65,7 +77,8 @@ class DashboardFragment : Fragment() {
                 object : JsonObjectRequest(Request.Method.GET, url, null, Response.Listener {
                     //handle Response request
                     try {
-                        progressLayout.visibility = View.GONE                       //hide the progressLayout whenever we'll get the data
+                        progressLayout.visibility =
+                            View.GONE                       //hide the progressLayout whenever we'll get the data
                         val success = it.getBoolean("success")
 
                         if (success) {
@@ -107,11 +120,13 @@ class DashboardFragment : Fragment() {
 
                 }, Response.ErrorListener {
                     //handle Error Listener
-                    Toast.makeText(
-                        activity as Context,
-                        "Volley Error occurred!!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if (activity != null) {
+                        Toast.makeText(
+                            activity as Context,
+                            "Volley Error occurred!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }) {
                     override fun getHeaders(): MutableMap<String, String> {
                         val headers = HashMap<String, String>()
@@ -140,6 +155,24 @@ class DashboardFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater?.inflate(R.menu.menu_dashboard, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item?.itemId
+
+        if (id == R.id.action_sort) {
+            Collections.sort(bookInfoList, ratingComparator)
+            bookInfoList.reverse()
+        }
+
+        recyclerAdapter.notifyDataSetChanged()
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

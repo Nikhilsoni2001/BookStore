@@ -26,6 +26,7 @@ class FavouriteFragment : Fragment() {
     lateinit var recyclerAdapter: FavouriteRecyclerAdapter
     var dbBookList = listOf<BookEntity>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +37,8 @@ class FavouriteFragment : Fragment() {
         progressLayout = view.findViewById(R.id.progressLayout)
         progressBar = view.findViewById(R.id.progressBar)
 
-        layoutManager = GridLayoutManager(activity as Context, 2)       //arranges 2 cards in one row
+        layoutManager =
+            GridLayoutManager(activity as Context, 2)       //arranges 2 cards in one row
 
         dbBookList = RetrieveFavourite(activity as Context).execute().get()
 
@@ -49,12 +51,14 @@ class FavouriteFragment : Fragment() {
         return view
     }
 
-    class RetrieveFavourite(val context: Context): AsyncTask<Void,Void,List<BookEntity>>(){
-        override fun doInBackground(vararg params: Void?): List<BookEntity> {
-            val db = Room.databaseBuilder(context, BookDatabase::class.java,"books-db").build()
+    class RetrieveFavourite(val context: Context) : AsyncTask<Void, Void, List<BookEntity>>() {
+        override fun doInBackground(vararg p0: Void?): List<BookEntity> {
+            val db = Room.databaseBuilder(context, BookDatabase::class.java, "books-db").build()
 
             return db.bookDao().getAllBooks()
         }
 
     }
 }
+
+

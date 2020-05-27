@@ -18,5 +18,6 @@
     <string name="my_name">Nikhil Soni</string>
     <string name="my_location">Mohali</string>
     <string name="check_internet">Check Internet</string>
+    <string name="sort">Sort</string>
 
 </resources>
